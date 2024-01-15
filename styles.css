@@ -1,0 +1,77 @@
+/* Размещение на странице */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: #f9f9f9;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* Стили для формы отзывов */
+#review-form {
+    background-color: #fff;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+#review-form label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+#review-form input,
+#review-form textarea,
+#review-form select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+#review-form button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+#review-form button:hover {
+    background-color: #0069d9;
+}
+
+/* Стили для контейнера отзывов */
+#reviews-container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+#reviews-container div {
+    margin-bottom: 20px;
+}
+
+#reviews-container h3 {
+    margin-top: 0;
+}
+
+#reviews-container p {
+    margin-bottom: 5px;
+}
+
+/* Стили для страницы */
+h1 {
+    text-align: center;
+}
+
