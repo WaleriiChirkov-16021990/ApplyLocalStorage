@@ -5,7 +5,7 @@ const reviewForm = document.getElementById("review-form");
 const reviewsContainer = document.getElementById("reviews-container");
 
 // Обработчик отправки формы
-reviewForm.addEventListener("submit", function(event) {
+reviewForm.addEventListener("submit", function (event) {
     event.preventDefault(); // Предотвращаем отправку формы
 
     // Получаем значения из полей формы
@@ -35,15 +35,27 @@ reviewForm.addEventListener("submit", function(event) {
     reviewsContainer.innerHTML = "";
 
     // Отображаем все отзывы
-    existingReviews.forEach(function(review) {
+    existingReviews.forEach(function (review) {
         const reviewElement = document.createElement("div");
         reviewElement.innerHTML = `
       <h3>${review.name}</h3>
       <p><strong>Продукт:</strong> ${review.product}</p>
       <p><strong>Оценка:</strong> ${review.rating}</p>
       <p><strong>Комментарий:</strong> ${review.comment}</p>
+      <button class="delete-btn">Удалить</button>
     `;
         reviewsContainer.appendChild(reviewElement);
+        const newReview = reviewElement.querySelector(".delete-btn");
+        newReview.addEventListener("click", function () {
+            const index = existingReviews.indexOf(review);
+            existingReviews.splice(index, 1);
+            localStorage.setItem("reviews", JSON.stringify(existingReviews));
+            reviewElement.remove();
+            newReview.remove();
+            if (existingReviews.length === 0) {
+                reviewsContainer.innerHTML = "<p>Отзывы отсутствуют</p>";
+            }
+        })
     });
 
     // Сбрасываем значения полей формы
@@ -51,17 +63,29 @@ reviewForm.addEventListener("submit", function(event) {
 });
 
 // При загрузке страницы отображаем уже существующие отзывы из localStorage
-window.addEventListener("load", function() {
+window.addEventListener("load", function () {
     const existingReviews = JSON.parse(localStorage.getItem("reviews")) || [];
 
-    existingReviews.forEach(function(review) {
+    existingReviews.forEach(function (review) {
         const reviewElement = document.createElement("div");
         reviewElement.innerHTML = `
       <h3>${review.name}</h3>
       <p><strong>Продукт:</strong> ${review.product}</p>
       <p><strong>Оценка:</strong> ${review.rating}</p>
       <p><strong>Комментарий:</strong> ${review.comment}</p>
+      <button class="delete-btn">Удалить</button>
     `;
         reviewsContainer.appendChild(reviewElement);
+        const newReview = reviewElement.querySelector(".delete-btn");
+        newReview.addEventListener("click", function () {
+            const index = existingReviews.indexOf(review);
+            existingReviews.splice(index, 1);
+            localStorage.setItem("reviews", JSON.stringify(existingReviews));
+            reviewElement.remove();
+            newReview.remove();
+            if (existingReviews.length === 0) {
+                reviewsContainer.innerHTML = "<p>Отзывы отсутствуют</p>";
+            }
+        })
     });
 });
